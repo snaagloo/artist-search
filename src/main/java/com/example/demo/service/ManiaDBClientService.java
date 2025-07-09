@@ -1,9 +1,12 @@
 package com.example.demo.service;
 
-import com.example.demo.service.artist.Item;
-import com.example.demo.service.artist.Rss;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 @Service
 public class ManiaDBClientService {
@@ -16,25 +19,17 @@ public class ManiaDBClientService {
     public String getArtistData(String artistName) {
         String baseUrl = "http://www.maniadb.com/api/search/";
         String suffix = "/?sr=artist&display=10&key=example&v=0.5";
+        String encodedArtist = URLEncoder.encode(artistName, StandardCharsets.UTF_8);
+        String uri = baseUrl + encodedArtist + suffix;
 
-        String xmlResponse = webClient.get()
-                .uri(baseUrl + artistName + suffix)
+        String xml = webClient.get()
+                .uri(uri)
                 .retrieve()
                 .bodyToMono(String.class)
                 .block();
 
-//        Rss rss = webClient.get()
-//                .uri(baseUrl + artistName + suffix)
-//                .retrieve()
-//                .bodyToMono(Rss.class)
-//                .block();
+        System.out.println(xml);
+        return xml;
 
-        return xmlResponse;
-//        System.out.println(rss);
-//        return webClient.get()
-//                .uri(baseUrl + artistName + suffix)
-//                .retrieve()
-//                .bodyToMono(Rss.class)
-//                .block();
     }
 }

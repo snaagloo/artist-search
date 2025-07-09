@@ -25,8 +25,5 @@ public class HelloController {
     @GetMapping("/artist")
     public String getArtist(@RequestParam String name) {
         return maniaDBClientService.getArtistData(name);
-//        return maniaDBClientService.getArtistData(name);
-
-//        return "입력한 이름: " + name;
     }
 }
