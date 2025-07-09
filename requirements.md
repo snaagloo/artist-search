@@ -1,0 +1,7 @@
+- 기술 스택 
+  - FE : 없어도 상관 없음
+  - BE : Spring Boot + Java
+  - 사용할 API : ManiaDB + Genius (Fallback)
+- 필요 기능
+  - 아티스트 검색
+  - 아티스트 검색 랭킹
