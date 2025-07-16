@@ -1,8 +1,6 @@
 package com.example.demo;
 
 import com.example.demo.service.ManiaDBClientService;
-import com.example.demo.service.artist.Item;
-import com.example.demo.service.artist.Rss;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
